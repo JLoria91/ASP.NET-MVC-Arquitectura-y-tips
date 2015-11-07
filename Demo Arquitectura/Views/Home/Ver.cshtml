@@ -1,0 +1,26 @@
+﻿@model Alumno
+@{
+    ViewBag.Title = Model.Nombre + " " + Model.Apellido;
+}
+
+<h2>@Model.Nombre @Model.Apellido</h2>
+
+<ol class="breadcrumb">
+    <li><a href="~/">Home</a></li>
+    <li class="active">@Model.Nombre @Model.Apellido</li>
+</ol>
+
+<dl>
+    <dt>@Html.LabelFor(x => x.Nombre)</dt>
+    <dd>@Model.Nombre</dd>
+
+    <dt>@Html.LabelFor(x => x.Apellido)</dt>
+    <dd>@Model.Apellido</dd>
+
+    <dt>@Html.LabelFor(x => x.FechaNacimiento)</dt>
+    <dd>@Model.FechaNacimiento</dd>
+
+    <dt>@Html.LabelFor(x => x.Sexo)</dt>
+    <dd>@(Model.Sexo == 1 ? "Macho" : "Hembrita")</dd>
+</dl>
+

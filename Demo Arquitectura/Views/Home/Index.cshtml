@@ -1,0 +1,25 @@
+﻿@model List<Alumno>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table table-striped">
+    <tr>
+        <th>Nombre</th>
+        <th style="width:100px;">Sexo</th>
+        <th style="width:160px;">Nacimiento</th>
+    </tr>
+    @foreach (var a in Model)
+    {
+        <tr>
+            <td>
+                <a href="~/home/ver/@a.id">@(a.Apellido), @a.Nombre</a>
+            </td>
+            <td>@(a.Sexo == 1 ? "Macho" : "Hembrita")</td>
+            <td>@a.FechaNacimiento</td>
+        </tr>
+    }
+</table>
+

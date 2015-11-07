@@ -1,0 +1,43 @@
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\Demo Arquitectura\Demo Arquitectura\bin\roslyn\csc.exe
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\Demo Arquitectura\Demo Arquitectura\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\Demo Arquitectura\Demo Arquitectura\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\Demo Arquitectura\Demo Arquitectura\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\Demo Arquitectura\Demo Arquitectura\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\Demo Arquitectura\Demo Arquitectura\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\Demo Arquitectura\Demo Arquitectura\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\Demo Arquitectura\Demo Arquitectura\bin\roslyn\System.Collections.Immutable.dll
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\Demo Arquitectura\Demo Arquitectura\bin\roslyn\System.Reflection.Metadata.dll
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\Demo Arquitectura\Demo Arquitectura\bin\roslyn\vbc.exe
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\Demo Arquitectura\Demo Arquitectura\bin\roslyn\VBCSCompiler.exe
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\Demo Arquitectura\Demo Arquitectura\bin\roslyn\VBCSCompiler.exe.config
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\Demo Arquitectura\Demo Arquitectura\bin\Demo Arquitectura.dll.config
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\Demo Arquitectura\Demo Arquitectura\bin\Demo Arquitectura.dll
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\Demo Arquitectura\Demo Arquitectura\bin\Demo Arquitectura.pdb
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\Demo Arquitectura\Demo Arquitectura\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\Demo Arquitectura\Demo Arquitectura\bin\Microsoft.Web.Infrastructure.dll
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\Demo Arquitectura\Demo Arquitectura\bin\System.Web.Helpers.dll
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\Demo Arquitectura\Demo Arquitectura\bin\System.Web.Mvc.dll
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\Demo Arquitectura\Demo Arquitectura\bin\System.Web.Razor.dll
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\Demo Arquitectura\Demo Arquitectura\bin\System.Web.Webpages.Deployment.dll
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\Demo Arquitectura\Demo Arquitectura\bin\System.Web.Webpages.dll
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\Demo Arquitectura\Demo Arquitectura\bin\System.Web.Webpages.Razor.dll
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\Demo Arquitectura\Demo Arquitectura\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\Demo Arquitectura\Demo Arquitectura\bin\System.Web.Razor.xml
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\Demo Arquitectura\Demo Arquitectura\bin\System.Web.Webpages.xml
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\Demo Arquitectura\Demo Arquitectura\bin\System.Web.Webpages.Deployment.xml
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\Demo Arquitectura\Demo Arquitectura\bin\System.Web.Webpages.Razor.xml
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\Demo Arquitectura\Demo Arquitectura\bin\System.Web.Helpers.xml
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\Demo Arquitectura\Demo Arquitectura\bin\System.Web.Mvc.xml
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\Demo Arquitectura\Demo Arquitectura\obj\Debug\Demo Arquitectura.dll
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\Demo Arquitectura\Demo Arquitectura\obj\Debug\Demo Arquitectura.pdb
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\Demo Arquitectura\Demo Arquitectura\bin\Model.dll
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\Demo Arquitectura\Demo Arquitectura\bin\EntityFramework.dll
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\Demo Arquitectura\Demo Arquitectura\bin\Model.pdb
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\Demo Arquitectura\Demo Arquitectura\bin\EntityFramework.xml
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\Demo Arquitectura\Demo Arquitectura\obj\Debug\Demo Arquitectura.csprojResolveAssemblyReference.cache
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\Demo Arquitectura\Demo Arquitectura\bin\EntityFramework.SqlServer.dll
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\Demo Arquitectura\Demo Arquitectura\bin\EntityFramework.SqlServer.xml
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\Demo Arquitectura\Demo Arquitectura\bin\Glimpse.Core.dll
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\Demo Arquitectura\Demo Arquitectura\bin\LightInject.dll
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\Demo Arquitectura\Demo Arquitectura\bin\LightInject.pdb
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\Demo Arquitectura\Demo Arquitectura\bin\LightInject.xml
