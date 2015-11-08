@@ -3,7 +3,9 @@
     ViewBag.Title = Model.Nombre + " " + Model.Apellido;
 }
 
-<h2>@Model.Nombre @Model.Apellido</h2>
+<h2 class="page-header">
+    @Model.Nombre @Model.Apellido
+</h2>
 
 <ol class="breadcrumb">
     <li><a href="~/">Home</a></li>
@@ -11,16 +13,16 @@
 </ol>
 
 <dl>
-    <dt>@Html.LabelFor(x => x.Nombre)</dt>
+    <dt>@Html.DisplayNameFor(x => x.Nombre)</dt>
     <dd>@Model.Nombre</dd>
 
-    <dt>@Html.LabelFor(x => x.Apellido)</dt>
+    <dt>@Html.DisplayNameFor(x => x.Apellido)</dt>
     <dd>@Model.Apellido</dd>
 
-    <dt>@Html.LabelFor(x => x.FechaNacimiento)</dt>
+    <dt>@Html.DisplayNameFor(x => x.FechaNacimiento)</dt>
     <dd>@Model.FechaNacimiento</dd>
 
-    <dt>@Html.LabelFor(x => x.Sexo)</dt>
+    <dt>@Html.DisplayNameFor(x => x.Sexo)</dt>
     <dd>@(Model.Sexo == 1 ? "Macho" : "Hembrita")</dd>
 </dl>
 

@@ -12,25 +12,79 @@ namespace Model.Repository
         protected DbSet<T> DbSet = null;
 
         #region Basic CRUD Operations
-        protected T Get(params Expression<Func<T, bool>>[] conditions)
+        protected T Get(Expression<Func<T, bool>> condition = null)
         {
-            var query = DatabaseContext.Set<T>();
+            var query = DatabaseContext.Set<T>().AsQueryable();
 
-            foreach (var c in conditions) query.Where(c);
+            if (condition != null)
+            {
+                query = query.Where(condition);
+            }
 
             return query.FirstOrDefault();
         }
 
-        protected IEnumerable<T> GetAll()
+        protected T Get(Expression<Func<T, bool>> condition = null, params Expression<Func<T, dynamic>>[] includes)
         {
-            return DatabaseContext.Set<T>();
+            var query = DatabaseContext.Set<T>().AsQueryable();
+
+            foreach (var include in includes)
+            {
+                query = query.Include(include);
+            }
+
+            if (condition != null)
+            {
+                query = query.Where(condition);
+            }
+
+            return query.FirstOrDefault();
         }
 
-        protected IEnumerable<T> FindBy(params Expression<Func<T, bool>>[] conditions)
+        protected IQueryable<T> GetAll()
         {
-            var query = DatabaseContext.Set<T>();
+            var query = DatabaseContext.Set<T>().AsQueryable();
 
-            foreach (var c in conditions) query.Where(c);
+            return query;
+        }
+
+        protected IQueryable<T> GetAll(params Expression<Func<T, dynamic>>[] includes)
+        {
+            var query = DatabaseContext.Set<T>().AsQueryable();
+
+            foreach (var include in includes)
+            {
+                query = query.Include(include);
+            }
+
+            return query;
+        }
+
+        protected IQueryable<T> FindBy(Expression<Func<T, bool>> condition)
+        {
+            var query = DatabaseContext.Set<T>().AsQueryable();
+
+            if (condition != null)
+            {
+                query = query.Where(condition);
+            }
+
+            return query;
+        }
+
+        protected IQueryable<T> FindBy(Expression<Func<T, bool>> condition, params Expression<Func<T, dynamic>>[] includes)
+        {
+            var query = DatabaseContext.Set<T>().AsQueryable();
+
+            foreach (var include in includes)
+            {
+                query = query.Include(include);
+            }
+
+            if (condition != null)
+            {
+                query = query.Where(condition);
+            }
 
             return query;
         }
@@ -40,17 +94,33 @@ namespace Model.Repository
             DatabaseContext.Entry(t).State = EntityState.Added;
         }
 
+        protected void Insert(IEnumerable<T> entities)
+        {
+            foreach (var e in entities)
+            {
+                DatabaseContext.Entry(e).State = EntityState.Added;
+            }
+        }
+
         protected void Update(T t)
         {
             DatabaseContext.Entry(t).State = EntityState.Modified;
         }
 
+        protected void Update(IEnumerable<T> entities)
+        {
+            foreach (var e in entities)
+            {
+                DatabaseContext.Entry(e).State = EntityState.Modified;
+            }
+        }
+
         /// <summary>
-        /// Update a entity by partial fields, is an experimental code ..
+        /// Update or Insert an entity by partial fields, is an experimental code ..
         /// </summary>
         /// <param name="t"></param>
         /// <param name="fields"></param>
-        protected void PartialUpdate<TProperty>(T t, params Expression<Func<T, TProperty>>[] properties)
+        protected void PartialUpdateOrInsert<TProperty>(T t, params Expression<Func<T, TProperty>>[] properties)
         {
             DatabaseContext.Configuration.AutoDetectChangesEnabled = false;
             DatabaseContext.Configuration.ValidateOnSaveEnabled = false;
@@ -91,10 +161,13 @@ namespace Model.Repository
         }
         #endregion
 
-        public DemoContext ContextScope()
+        public DemoContext ContextScope(bool LazyLoadingEnabled = false, bool ProxyCreationEnabled = false)
         {
             DatabaseContext = new DemoContext();
             DbSet = DatabaseContext.Set<T>();
+
+            DatabaseContext.Configuration.LazyLoadingEnabled = LazyLoadingEnabled;
+            DatabaseContext.Configuration.ProxyCreationEnabled = ProxyCreationEnabled;
 
             return DatabaseContext;
         }

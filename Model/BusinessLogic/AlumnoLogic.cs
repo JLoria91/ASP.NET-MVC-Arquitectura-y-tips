@@ -2,6 +2,7 @@
 using Model.Entities;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 
 namespace Model.BusinessLogic
 {
@@ -9,9 +10,14 @@ namespace Model.BusinessLogic
     {
         public List<Alumno> Listar()
         {
-            using (this.ContextScope())
+            using (var db = this.ContextScope())
             {
-                return this.GetAll().OrderBy(x => x.Apellido).ToList();
+                return this.GetAll(
+                                x => x.AlumnoCurso
+                                      .Select(ac => ac.Curso)
+                            )
+                           .OrderBy(x => x.Apellido)
+                           .ToList();
             }
         }
 
@@ -52,11 +58,20 @@ namespace Model.BusinessLogic
             }
         }
 
+        public void InsertarVarios(List<Alumno> alumnos)
+        {
+            using (this.ContextScope())
+            {
+                this.Insert(alumnos);
+                this.Save();
+            }
+        }
+
         public void ActualizarNombre(Alumno alumno)
         {
             using (this.ContextScope())
             {
-                this.PartialUpdate(alumno, x => x.Nombre, x => x.Apellido);
+                this.PartialUpdateOrInsert(alumno, x => x.Nombre, x => x.Apellido);
                 this.Save();
             }
         }

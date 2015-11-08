@@ -12,14 +12,7 @@ namespace Demo_Arquitectura.Controllers
 
         public ActionResult Index()
         {
-            var alumnos = new List<Alumno>();
-
-            foreach (var a in alumnoLogic.Listar()) alumnos.Add(a);
-
-            alumnos.Add(alumnoLogic.Buscar(3001));
-
-            alumnos.AddRange(alumnoLogic.ListarConQueryPersonalizado());
-
+            var alumnos = alumnoLogic.Listar();
             return View(alumnos);
         }
 
@@ -51,6 +44,23 @@ namespace Demo_Arquitectura.Controllers
                 Nombre = "Carlos",
                 Apellido = "Rodríguez"
             });
+        }
+
+        public void InsercionMasiva()
+        {
+            var alumnos = new List<Alumno>();
+
+            for (var i = 0; i < 10; i++)
+            {
+                alumnos.Add(new Alumno() {
+                    Nombre = "Nombre " + i,
+                    Apellido = "Apellido " + i,
+                    Sexo = 1,
+                    FechaNacimiento = "1989-01-01"
+                });
+            }
+
+            alumnoLogic.InsertarVarios(alumnos);
         }
     }
 }

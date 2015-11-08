@@ -59,10 +59,7 @@
     <Compile Include="Entities\AlumnoCurso.cs" />
     <Compile Include="Entities\Curso.cs" />
     <Compile Include="DemoContext.cs" />
-    <Compile Include="Entities\Permiso.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Entities\Rol.cs" />
-    <Compile Include="Entities\Usuario.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
