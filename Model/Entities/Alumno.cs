@@ -1,14 +1,15 @@
 namespace Model.Entities
 {
+    using Interfaces;
+    using System;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
     [Table("Alumno")]
-    public partial class Alumno
+    public partial class Alumno : IAuditoria, IEliminable
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Alumno()
         {
             Adjunto = new List<Adjunto>();
@@ -32,10 +33,13 @@ namespace Model.Entities
         [DisplayName("Nacimiento")]
         public string FechaNacimiento { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public int? Pais_id {get;set;}
+        public virtual Pais Pais {get; set;}
+
         public virtual ICollection<Adjunto> Adjunto { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AlumnoCurso> AlumnoCurso { get; set; }
+
+        public bool Eliminado { get; set; }
     }
 }

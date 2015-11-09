@@ -1,77 +1,106 @@
-﻿using Model.Repository;
-using Model.Entities;
+﻿using Model.Entities;
 using System.Collections.Generic;
+using System;
 using System.Linq;
-using System.Data.Entity;
+using Repository;
 
 namespace Model.BusinessLogic
 {
     public class AlumnoLogic : Repository<Alumno>
     {
+        private ResponseModel rm;
+
+        public AlumnoLogic()
+        {
+            rm = new ResponseModel();
+        }
+
         public List<Alumno> Listar()
         {
-            using (var db = this.ContextScope())
+            using (var db = this.ContextScope(new DemoContext()))
             {
                 return this.GetAll(
-                                x => x.AlumnoCurso
-                                      .Select(ac => ac.Curso)
+                                x => x.Pais,
+                                x => x.AlumnoCurso.Select(ac => ac.Alumno)
                             )
-                           .OrderBy(x => x.Apellido)
+                           .OrderByDescending(x => x.id)
                            .ToList();
             }
         }
 
         public List<Alumno> ListarConQueryPersonalizado()
         {
-            using (this.ContextScope())
+            using (this.ContextScope(new DemoContext()))
             {
                 return this.SqlQuery("SELECT * FROM Alumno")
                            .ToList();
             }
         }
 
-        public Alumno Buscar(int id)
+        public ResponseModel Guardar(Alumno alumno)
         {
-            using (this.ContextScope())
-            {
-                return this.FindBy(x => x.id == id)
-                           .FirstOrDefault();
-            }
-        }
-
-        public void Guardar(Alumno alumno)
-        {
-            using (this.ContextScope())
+            using (this.ContextScope(new DemoContext()))
             {
                 if (alumno.id == 0) this.Insert(alumno);
                 else this.Update(alumno);
 
                 this.Save();
+
+                rm.SetResponse(true);
+                return rm;
             }
         }
 
-        public Alumno Get(int id)
+        public ResponseModel Eliminar(int id)
         {
-            using (this.ContextScope())
+            using (this.ContextScope(new DemoContext()))
             {
-                return this.Get(x => x.id == id);
+                this.PartialUpdate(new Alumno { id = id, Eliminado = true }, x => x.Eliminado);
+                this.Save();
+
+                rm.SetResponse(true);
+                return rm;
+            }
+        }
+
+        public Alumno Obtener(int id)
+        {
+            using (this.ContextScope(new DemoContext()))
+            {
+                return this.Get(
+                    x => x.id == id,
+                    x => x.AlumnoCurso.Select(ac => ac.Curso),
+                    x => x.Pais
+                );
             }
         }
 
         public void InsertarVarios(List<Alumno> alumnos)
         {
-            using (this.ContextScope())
+            using (this.ContextScope(new DemoContext()))
             {
-                this.Insert(alumnos);
-                this.Save();
+                using (var trans = this.BeginsTransaction())
+                {
+                    try
+                    {
+                        this.Insert(alumnos);
+                        this.Save();
+
+                        trans.Commit();
+                    }
+                    catch (Exception)
+                    {
+                        trans.Rollback();
+                    }
+                }
             }
         }
 
         public void ActualizarNombre(Alumno alumno)
         {
-            using (this.ContextScope())
+            using (this.ContextScope(new DemoContext()))
             {
-                this.PartialUpdateOrInsert(alumno, x => x.Nombre, x => x.Apellido);
+                this.PartialUpdate(alumno, x => x.Nombre, x => x.Apellido);
                 this.Save();
             }
         }

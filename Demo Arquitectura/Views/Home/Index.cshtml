@@ -4,6 +4,11 @@
 }
 
 <h2 class="page-header">
+    <span class="pull-right">
+        <a class="btn btn-primary" href="~/home/crud">
+            Nuevo registro
+        </a>
+    </span>
     Alumnos
 </h2>
 
@@ -12,6 +17,8 @@
         <th>Nombre</th>
         <th style="width:100px;">Sexo</th>
         <th style="width:160px;">Nacimiento</th>
+        <th style="width:160px;">País</th>
+        <th style="width:200px;"></th>
     </tr>
     @foreach (var a in Model)
     {
@@ -21,6 +28,15 @@
             </td>
             <td>@(a.Sexo == 1 ? "Macho" : "Hembrita")</td>
             <td>@a.FechaNacimiento</td>
+            <td>@a.Pais.Nombre</td>
+            <td class="text-right">
+                <a class="btn btn-primary btn-xs" href="~/home/crud/@a.id">
+                    Editar
+                </a>
+                <a class="btn btn-danger btn-xs" href="~/home/Eliminar/@a.id">
+                    Eliminar
+                </a>
+            </td>
         </tr>
     }
 </table>

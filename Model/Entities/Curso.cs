@@ -9,7 +9,6 @@ namespace Model.Entities
     [Table("Curso")]
     public partial class Curso
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Curso()
         {
             AlumnoCurso = new List<AlumnoCurso>();
@@ -21,7 +20,6 @@ namespace Model.Entities
         [StringLength(100)]
         public string Nombre { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AlumnoCurso> AlumnoCurso { get; set; }
     }
 }

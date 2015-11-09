@@ -1,7 +1,5 @@
 ﻿using Model.BusinessLogic;
 using Model.Entities;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web.Mvc;
 
 namespace Demo_Arquitectura.Controllers
@@ -9,6 +7,7 @@ namespace Demo_Arquitectura.Controllers
     public class HomeController : Controller
     {
         private AlumnoLogic alumnoLogic = new AlumnoLogic();
+        private PaisLogic paisLogic = new PaisLogic();
 
         public ActionResult Index()
         {
@@ -18,49 +17,40 @@ namespace Demo_Arquitectura.Controllers
 
         public ActionResult Ver(int id)
         {
-            return View(alumnoLogic.Get(id));
+            var model = alumnoLogic.Obtener(id);
+            return View(model);
         }
 
-        public ActionResult Crud()
+        public ActionResult Crud(int id = 0)
         {
-            return View();
+            ViewBag.Paises = paisLogic.Listar();
+            return View(
+                id == 0 ? new Alumno()
+                        : alumnoLogic.Obtener(id)
+            );
         }
 
-        public void Guardar()
+        public JsonResult Guardar(Alumno model)
         {
-            alumnoLogic.Guardar(new Alumno {
-                Nombre = "Carlos",
-                Apellido = "Lozano Paredes",
-                FechaNacimiento = "2001-02-03",
-                Sexo = 1
-            });
-        }
+            var rm = new ResponseModel();
 
-        public void ActualizarNombre()
-        {
-            alumnoLogic.ActualizarNombre(new Alumno
+            if (ModelState.IsValid)
             {
-                id = 2004,
-                Nombre = "Carlos",
-                Apellido = "Rodríguez"
-            });
-        }
+                rm = alumnoLogic.Guardar(model);
 
-        public void InsercionMasiva()
-        {
-            var alumnos = new List<Alumno>();
-
-            for (var i = 0; i < 10; i++)
-            {
-                alumnos.Add(new Alumno() {
-                    Nombre = "Nombre " + i,
-                    Apellido = "Apellido " + i,
-                    Sexo = 1,
-                    FechaNacimiento = "1989-01-01"
-                });
+                if (rm.response)
+                {
+                    rm.href = Url.Content("~/home");
+                }
             }
 
-            alumnoLogic.InsertarVarios(alumnos);
+            return Json(rm);
+        }
+
+        public ActionResult Eliminar(int id)
+        {
+            alumnoLogic.Eliminar(id);
+            return Redirect("~/home");
         }
     }
 }
