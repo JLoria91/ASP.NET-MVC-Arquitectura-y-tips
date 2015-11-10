@@ -55,12 +55,10 @@
     <Compile Include="BusinessLogic\AlumnoLogic.cs" />
     <Compile Include="BusinessLogic\ResponseModel.cs" />
     <Compile Include="DemoContext.cs" />
-    <Compile Include="Entities\Auditoria.cs" />
     <Compile Include="Entities\Adjunto.cs" />
     <Compile Include="Entities\Alumno.cs" />
     <Compile Include="Entities\AlumnoCurso.cs" />
     <Compile Include="Entities\Curso.cs" />
-    <Compile Include="Entities\Interfaces\IEliminable.cs" />
     <Compile Include="Entities\Pais.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

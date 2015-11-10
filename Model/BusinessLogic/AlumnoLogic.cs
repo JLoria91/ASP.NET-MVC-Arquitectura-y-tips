@@ -6,20 +6,22 @@ using Repository;
 
 namespace Model.BusinessLogic
 {
-    public class AlumnoLogic : Repository<Alumno>
+    public class AlumnoLogic
     {
         private ResponseModel rm;
+        private Repository<Alumno> repo;
 
         public AlumnoLogic()
         {
             rm = new ResponseModel();
+            repo = new Repository<Alumno>();
         }
 
         public List<Alumno> Listar()
         {
-            using (var db = this.ContextScope(new DemoContext()))
+            using (var db = repo.ContextScope(new DemoContext()))
             {
-                return this.GetAll(
+                return repo.GetAll(
                                 x => x.Pais,
                                 x => x.AlumnoCurso.Select(ac => ac.Alumno)
                             )
@@ -30,21 +32,21 @@ namespace Model.BusinessLogic
 
         public List<Alumno> ListarConQueryPersonalizado()
         {
-            using (this.ContextScope(new DemoContext()))
+            using (repo.ContextScope(new DemoContext()))
             {
-                return this.SqlQuery("SELECT * FROM Alumno")
+                return repo.SqlQuery("SELECT * FROM Alumno")
                            .ToList();
             }
         }
 
         public ResponseModel Guardar(Alumno alumno)
         {
-            using (this.ContextScope(new DemoContext()))
+            using (repo.ContextScope(new DemoContext()))
             {
-                if (alumno.id == 0) this.Insert(alumno);
-                else this.Update(alumno);
+                if (alumno.id == 0) repo.Insert(alumno);
+                else repo.Update(alumno);
 
-                this.Save();
+                repo.Save();
 
                 rm.SetResponse(true);
                 return rm;
@@ -53,10 +55,10 @@ namespace Model.BusinessLogic
 
         public ResponseModel Eliminar(int id)
         {
-            using (this.ContextScope(new DemoContext()))
+            using (repo.ContextScope(new DemoContext()))
             {
-                this.PartialUpdate(new Alumno { id = id, Eliminado = true }, x => x.Eliminado);
-                this.Save();
+                repo.PartialUpdate(new Alumno { id = id, Eliminado = true }, x => x.Eliminado);
+                repo.Save();
 
                 rm.SetResponse(true);
                 return rm;
@@ -65,9 +67,9 @@ namespace Model.BusinessLogic
 
         public Alumno Obtener(int id)
         {
-            using (this.ContextScope(new DemoContext()))
+            using (repo.ContextScope(new DemoContext()))
             {
-                return this.Get(
+                return repo.Get(
                     x => x.id == id,
                     x => x.AlumnoCurso.Select(ac => ac.Curso),
                     x => x.Pais
@@ -77,14 +79,14 @@ namespace Model.BusinessLogic
 
         public void InsertarVarios(List<Alumno> alumnos)
         {
-            using (this.ContextScope(new DemoContext()))
+            using (repo.ContextScope(new DemoContext()))
             {
-                using (var trans = this.BeginsTransaction())
+                using (var trans = repo.BeginsTransaction())
                 {
                     try
                     {
-                        this.Insert(alumnos);
-                        this.Save();
+                        repo.Insert(alumnos);
+                        repo.Save();
 
                         trans.Commit();
                     }
@@ -98,10 +100,10 @@ namespace Model.BusinessLogic
 
         public void ActualizarNombre(Alumno alumno)
         {
-            using (this.ContextScope(new DemoContext()))
+            using (repo.ContextScope(new DemoContext()))
             {
-                this.PartialUpdate(alumno, x => x.Nombre, x => x.Apellido);
-                this.Save();
+                repo.PartialUpdate(alumno, x => x.Nombre, x => x.Apellido);
+                repo.Save();
             }
         }
     }

@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Model.Entities.Interfaces
+namespace Repository.Interfaces
 {
-    public interface IEliminable
+    public interface IEntityDelete
     {
-        bool Eliminado { get; set; }
+        bool Deleted { get; set; }
     }
 }

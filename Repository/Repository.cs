@@ -3,13 +3,14 @@ using System.Data.Entity;
 using System;
 using System.Linq;
 using System.Linq.Expressions;
+using Repository.Interfaces;
 
 namespace Repository
 {
     public class Repository<T> where T : class, new()
     {
         private DbContext DatabaseContext;
-        protected DbSet<T> DbSet;
+        public DbSet<T> DbSet;
 
         #region Basic CRUD Operations
 
@@ -18,7 +19,7 @@ namespace Repository
         /// </summary>
         /// <param name="condition"></param>
         /// <returns></returns>
-        protected T Get(Expression<Func<T, bool>> condition = null)
+        public T Get(Expression<Func<T, bool>> condition = null)
         {
             var query = DatabaseContext.Set<T>().AsQueryable();
 
@@ -36,7 +37,7 @@ namespace Repository
         /// <param name="condition"></param>
         /// <param name="includes"></param>
         /// <returns></returns>
-        protected T Get(Expression<Func<T, bool>> condition = null, params Expression<Func<T, dynamic>>[] includes)
+        public T Get(Expression<Func<T, bool>> condition = null, params Expression<Func<T, dynamic>>[] includes)
         {
             var query = DatabaseContext.Set<T>().AsQueryable();
 
@@ -57,7 +58,7 @@ namespace Repository
         /// Retorna un objeto Queryable, si queremos que traiga información de la base de datos podemos usar un GetAll().ToList()
         /// </summary>
         /// <returns></returns>
-        protected IQueryable<T> GetAll()
+        public IQueryable<T> GetAll()
         {
             var query = DatabaseContext.Set<T>().AsQueryable();
 
@@ -72,7 +73,7 @@ namespace Repository
         /// <param name="condition"></param>
         /// <param name="includes"></param>
         /// <returns></returns>
-        protected IQueryable<T> GetAll(params Expression<Func<T, dynamic>>[] includes)
+        public IQueryable<T> GetAll(params Expression<Func<T, dynamic>>[] includes)
         {
             var query = DatabaseContext.Set<T>().AsQueryable();
 
@@ -90,7 +91,7 @@ namespace Repository
         /// <param name="condition"></param>
         /// <param name="includes"></param>
         /// <returns></returns>
-        protected IQueryable<T> FindBy(Expression<Func<T, bool>> condition)
+        public IQueryable<T> FindBy(Expression<Func<T, bool>> condition)
         {
             var query = DatabaseContext.Set<T>().AsQueryable();
 
@@ -105,7 +106,7 @@ namespace Repository
         /// <param name="condition"></param>
         /// <param name="includes"></param>
         /// <returns></returns>
-        protected IQueryable<T> FindBy(Expression<Func<T, bool>> condition, params Expression<Func<T, dynamic>>[] includes)
+        public IQueryable<T> FindBy(Expression<Func<T, bool>> condition, params Expression<Func<T, dynamic>>[] includes)
         {
             var query = DatabaseContext.Set<T>().AsQueryable();
 
@@ -123,7 +124,7 @@ namespace Repository
         /// Inserta un registro en nuestra tabla
         /// </summary>
         /// <param name="t"></param>
-        protected void Insert(T t)
+        public void Insert(T t)
         {
             DatabaseContext.Entry(t).State = EntityState.Added;
         }
@@ -132,7 +133,7 @@ namespace Repository
         /// Inserta varios registros en nuestra tabla
         /// </summary>
         /// <param name="t"></param>
-        protected void Insert(IEnumerable<T> entities)
+        public void Insert(IEnumerable<T> entities)
         {
             foreach (var e in entities)
             {
@@ -144,7 +145,7 @@ namespace Repository
         /// Actualiza un registro de nuestra tabla
         /// </summary>
         /// <param name="t"></param>
-        protected void Update(T t)
+        public void Update(T t)
         {
             DatabaseContext.Entry(t).State = EntityState.Modified;
         }
@@ -153,7 +154,7 @@ namespace Repository
         /// Actualiza varios registros de nuestra tabla
         /// </summary>
         /// <param name="t"></param>
-        protected void Update(IEnumerable<T> entities)
+        public void Update(IEnumerable<T> entities)
         {
             foreach (var e in entities)
             {
@@ -166,7 +167,7 @@ namespace Repository
         /// </summary>
         /// <param name="t"></param>
         /// <param name="fields"></param>
-        protected void PartialUpdate<TProperty>(T t, params Expression<Func<T, TProperty>>[] properties)
+        public void PartialUpdate<TProperty>(T t, params Expression<Func<T, TProperty>>[] properties)
         {
             DatabaseContext.Configuration.AutoDetectChangesEnabled = false;
             DatabaseContext.Configuration.ValidateOnSaveEnabled = false;
@@ -182,12 +183,12 @@ namespace Repository
         /// </summary>
         /// <param name="t"></param>
         /// <param name="fields"></param>
-        protected void Delete(T t)
+        public void Delete(T t)
         {
             DatabaseContext.Entry(t).State = EntityState.Deleted;
         }
 
-        protected void Save()
+        public void Save()
         {
             DatabaseContext.SaveChanges();
         }
@@ -200,7 +201,7 @@ namespace Repository
         /// <param name="query"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        protected IEnumerable<T> SqlQuery(string query, params dynamic[] parameters)
+        public IEnumerable<T> SqlQuery(string query, params dynamic[] parameters)
         {
             return DatabaseContext.Database.SqlQuery<T>(query, parameters);
         }
@@ -211,7 +212,7 @@ namespace Repository
         /// <param name="query"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        protected void ExecuteSqlCommand(string query, params dynamic[] parameters)
+        public void ExecuteSqlCommand(string query, params dynamic[] parameters)
         {
             DatabaseContext.Database.ExecuteSqlCommand(query, parameters);
         }

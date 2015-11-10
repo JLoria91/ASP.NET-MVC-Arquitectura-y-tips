@@ -1,14 +1,12 @@
 namespace Model.Entities
 {
-    using Interfaces;
-    using System;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
     [Table("Alumno")]
-    public partial class Alumno : IAuditoria, IEliminable
+    public partial class Alumno
     {
         public Alumno()
         {
@@ -28,6 +26,8 @@ namespace Model.Entities
 
         public int Sexo { get; set; }
 
+        public bool Eliminado { get; set; }
+
         [Required]
         [StringLength(10)]
         [DisplayName("Nacimiento")]
@@ -39,7 +39,5 @@ namespace Model.Entities
         public virtual ICollection<Adjunto> Adjunto { get; set; }
 
         public virtual ICollection<AlumnoCurso> AlumnoCurso { get; set; }
-
-        public bool Eliminado { get; set; }
     }
 }
