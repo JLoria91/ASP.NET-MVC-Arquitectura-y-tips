@@ -24,7 +24,7 @@ namespace Model.BusinessLogic
             {
                 return repo.GetAll(
                                 x => x.Pais,
-                                x => x.AlumnoCurso.Select(ac => ac.Alumno),
+                                x => x.AlumnoCurso.Select(ac => ac.Curso),
                                 x => x.Adjunto
                             )
                            .Where(x => !x.Eliminado)
