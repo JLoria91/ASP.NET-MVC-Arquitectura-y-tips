@@ -9,13 +9,16 @@ Implementaciones que se han hecho
 * Creación de un repositorio personalizado para EF
 * Auditoría de tablas
 * Distribución del proyecto
+* Autenticación personalizada usando nuestra clase SessionHelper
 
 Datos de accesso
 ----------------
+Usen los siguientes datos para acceder al sistema, la contraseña está guardado usando el algoritmo SHA1.
 - Correo: erodriguez@anexsoft.com
 - Contraseña: 123456
 
-Enlaces
-------------
+Enlaces de interés
+------------------
 - http://anexsoft.com/p/110/entity-framework-repository-te-suena-el-getall-insert-find-etc
 - http://anexsoft.com/p/111/implementando-auditoria-a-nuestras-tablas-con-entity-framework
+- http://anexsoft.com/p/91/clase-para-agilizar-la-autenticacion-en-asp-net-mvc
