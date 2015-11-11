@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Model.BusinessLogic
+namespace Common
 {
     /// <summary>
     /// Esta clase ha sido creada con la finalidad de crear una comunicación con el modelo, ya sea retornando una respuesta o un objeto.

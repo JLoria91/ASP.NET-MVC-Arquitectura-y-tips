@@ -16,7 +16,6 @@ D:\Mi Trabajo\Tutoriales\asp.net-mvc\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquit
 D:\Mi Trabajo\Tutoriales\asp.net-mvc\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\EntityFramework.dll
 D:\Mi Trabajo\Tutoriales\asp.net-mvc\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\EntityFramework.SqlServer.dll
 D:\Mi Trabajo\Tutoriales\asp.net-mvc\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\Glimpse.Core.dll
-D:\Mi Trabajo\Tutoriales\asp.net-mvc\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\LightInject.dll
 D:\Mi Trabajo\Tutoriales\asp.net-mvc\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 D:\Mi Trabajo\Tutoriales\asp.net-mvc\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\Microsoft.Web.Infrastructure.dll
 D:\Mi Trabajo\Tutoriales\asp.net-mvc\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\Model.dll
@@ -31,8 +30,6 @@ D:\Mi Trabajo\Tutoriales\asp.net-mvc\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquit
 D:\Mi Trabajo\Tutoriales\asp.net-mvc\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\Repository.pdb
 D:\Mi Trabajo\Tutoriales\asp.net-mvc\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\EntityFramework.xml
 D:\Mi Trabajo\Tutoriales\asp.net-mvc\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\EntityFramework.SqlServer.xml
-D:\Mi Trabajo\Tutoriales\asp.net-mvc\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\LightInject.pdb
-D:\Mi Trabajo\Tutoriales\asp.net-mvc\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\LightInject.xml
 D:\Mi Trabajo\Tutoriales\asp.net-mvc\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 D:\Mi Trabajo\Tutoriales\asp.net-mvc\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\System.Web.Razor.xml
 D:\Mi Trabajo\Tutoriales\asp.net-mvc\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\System.Web.Webpages.xml
@@ -43,3 +40,5 @@ D:\Mi Trabajo\Tutoriales\asp.net-mvc\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquit
 D:\Mi Trabajo\Tutoriales\asp.net-mvc\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\obj\Debug\FrontEnd.csprojResolveAssemblyReference.cache
 D:\Mi Trabajo\Tutoriales\asp.net-mvc\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\obj\Debug\Demo Arquitectura.dll
 D:\Mi Trabajo\Tutoriales\asp.net-mvc\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\obj\Debug\Demo Arquitectura.pdb
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\Common.dll
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\Common.pdb

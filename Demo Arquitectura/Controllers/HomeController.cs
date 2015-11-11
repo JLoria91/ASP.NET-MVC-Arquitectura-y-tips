@@ -1,9 +1,12 @@
-﻿using Model.BusinessLogic;
+﻿using Common;
+using Demo_Arquitectura.Filters;
+using Model.BusinessLogic;
 using Model.Entities;
 using System.Web.Mvc;
 
 namespace Demo_Arquitectura.Controllers
 {
+    [AutenticadoAttribute]
     public class HomeController : Controller
     {
         private AlumnoLogic alumnoLogic = new AlumnoLogic();

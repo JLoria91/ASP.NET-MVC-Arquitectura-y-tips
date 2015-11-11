@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Arquitectura Empresarial</title>
+    <meta name="description" content="@ViewBag.Description" />
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
@@ -24,13 +25,23 @@
                     <li>
                         <a href="~/">Alumnos</a>
                     </li>
+                    @if (Common.SessionHelper.ExistUserInSession())
+                    {
+                        <li>
+                            <a href="~/account/desconectarse">Salir</a>
+                        </li>
+                    }
                 </ul>
             </div>
         </div>
     </div>
 
     <div class="container body-content">
-        @RenderBody()
+        <div class="row">
+            <div class="col-xs-12">
+                @RenderBody()
+            </div>
+        </div>
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - By Anexsoft</p>

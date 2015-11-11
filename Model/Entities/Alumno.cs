@@ -1,12 +1,14 @@
 namespace Model.Entities
 {
+    using Interfaces;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using System;
 
     [Table("Alumno")]
-    public partial class Alumno
+    public partial class Alumno : IAuditable
     {
         public Alumno()
         {
@@ -39,5 +41,12 @@ namespace Model.Entities
         public virtual ICollection<Adjunto> Adjunto { get; set; }
 
         public virtual ICollection<AlumnoCurso> AlumnoCurso { get; set; }
+
+        #region Auditoria
+        public int CreadoPor { get; set; }
+        public DateTime CreadoFecha { get; set; }
+        public int ActualizadoPor { get; set; }
+        public DateTime ActualizadoFecha { get; set; }
+        #endregion
     }
 }

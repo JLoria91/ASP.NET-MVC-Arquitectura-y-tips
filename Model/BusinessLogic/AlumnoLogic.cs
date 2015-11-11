@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 using Repository;
+using Common;
 
 namespace Model.BusinessLogic
 {
@@ -23,8 +24,10 @@ namespace Model.BusinessLogic
             {
                 return repo.GetAll(
                                 x => x.Pais,
-                                x => x.AlumnoCurso.Select(ac => ac.Alumno)
+                                x => x.AlumnoCurso.Select(ac => ac.Alumno),
+                                x => x.Adjunto
                             )
+                           .Where(x => !x.Eliminado)
                            .OrderByDescending(x => x.id)
                            .ToList();
             }

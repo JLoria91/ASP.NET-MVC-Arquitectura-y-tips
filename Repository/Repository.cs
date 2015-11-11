@@ -64,8 +64,7 @@ namespace Repository
 
             return query;
         }
-
-
+        
         /// <summary>
         /// Retorna un objeto Queryable, si queremos que traiga información de la base de datos podemos usar un GetAll().ToList().
         /// Adicionalmente, podemos especificar que asocaciones queremos que incluya.

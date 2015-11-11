@@ -2,6 +2,10 @@ namespace Model
 {
     using System.Data.Entity;
     using Entities;
+    using Entities.Interfaces;
+    using System.Linq;
+    using System;
+    using Common;
 
     public partial class DemoContext : DbContext
     {
@@ -15,7 +19,8 @@ namespace Model
         public virtual DbSet<AlumnoCurso> AlumnoCurso { get; set; }
         public virtual DbSet<Curso> Curso { get; set; }
         public virtual DbSet<Pais> Pais { get; set; }
-        
+        public virtual DbSet<Usuario> Usuario { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Adjunto>()
@@ -61,7 +66,39 @@ namespace Model
 
         public override int SaveChanges()
         {
+            Auditar();
             return base.SaveChanges();
+        }
+
+        public void Auditar()
+        {
+            var modifiedEntries = ChangeTracker.Entries().Where(
+                x => x.Entity is IAuditable && (x.State == System.Data.Entity.EntityState.Added
+                     || x.State == System.Data.Entity.EntityState.Modified));
+
+            foreach (var entry in modifiedEntries)
+            {
+                IAuditable entity = entry.Entity as IAuditable;
+                if (entity != null)
+                {
+                    var fecha = DateTime.Now;
+                    var usuario = SessionHelper.GetUser();
+
+                    if (entry.State == EntityState.Added)
+                    {
+                        entity.CreadoFecha = fecha;
+                        entity.CreadoPor = usuario;
+                    }
+                    else
+                    {
+                        base.Entry(entity).Property(x => x.CreadoFecha).IsModified = false;
+                        base.Entry(entity).Property(x => x.CreadoPor).IsModified = false;
+                    }
+
+                    entity.ActualizadoFecha = fecha;
+                    entity.ActualizadoPor = usuario;
+                }
+            }
         }
     }
 }

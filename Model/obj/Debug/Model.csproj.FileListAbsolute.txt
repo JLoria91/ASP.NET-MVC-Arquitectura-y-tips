@@ -19,3 +19,5 @@ D:\Mi Trabajo\Tutoriales\asp.net-mvc\ASP.NET-MVC-Arquitectura-y-tips\Model\obj\D
 D:\Mi Trabajo\Tutoriales\asp.net-mvc\ASP.NET-MVC-Arquitectura-y-tips\Model\bin\Debug\Repository.dll
 D:\Mi Trabajo\Tutoriales\asp.net-mvc\ASP.NET-MVC-Arquitectura-y-tips\Model\bin\Debug\Repository.pdb
 D:\Mi Trabajo\Tutoriales\asp.net-mvc\ASP.NET-MVC-Arquitectura-y-tips\Model\bin\Debug\Model.dll.config
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\ASP.NET-MVC-Arquitectura-y-tips\Model\bin\Debug\Common.dll
+D:\Mi Trabajo\Tutoriales\asp.net-mvc\ASP.NET-MVC-Arquitectura-y-tips\Model\bin\Debug\Common.pdb

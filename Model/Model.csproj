@@ -51,15 +51,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessLogic\UsuarioLogic.cs" />
     <Compile Include="BusinessLogic\PaisLogic.cs" />
     <Compile Include="BusinessLogic\AlumnoLogic.cs" />
-    <Compile Include="BusinessLogic\ResponseModel.cs" />
     <Compile Include="DemoContext.cs" />
     <Compile Include="Entities\Adjunto.cs" />
     <Compile Include="Entities\Alumno.cs" />
     <Compile Include="Entities\AlumnoCurso.cs" />
     <Compile Include="Entities\Curso.cs" />
+    <Compile Include="Entities\Interfaces\IAuditable.cs" />
     <Compile Include="Entities\Pais.cs" />
+    <Compile Include="Entities\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -67,6 +69,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{0a8c6154-dc0a-46eb-b45b-10beacc66bb6}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Repository\Repository.csproj">
       <Project>{3345bb71-fa4a-425d-9ce2-b08331057b5a}</Project>
       <Name>Repository</Name>
