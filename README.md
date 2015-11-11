@@ -12,8 +12,8 @@ Implementaciones que se han hecho
 
 Datos de accesso
 ----------------
-Correo: erodriguez@anexsoft.com
-Contraseña: 123456
+- Correo: erodriguez@anexsoft.com
+- Contraseña: 123456
 
 Enlaces
 ------------
