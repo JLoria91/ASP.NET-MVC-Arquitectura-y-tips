@@ -1,7 +1,7 @@
 # ASP.NET-MVC-Arquitectura-y-tips
 Tips para comenzar una arquitectura de software usando ASP.NET MVC
 
-El objetivo es mostrar una posible arquitectura de software que podemos implementar en nuestros proyectos ASP.NET MVC. Lo que vamos a dar mas fuerza es al Repositorio que se ha creado para el EF.
+El objetivo es mostrar una posible arquitectura de software que podemos implementar en nuestros proyectos ASP.NET MVC. Lo que vamos a dar más fuerza es al Repositorio que se ha creado para el EF.
 Este repositorio de GitHub lo vamos ir actualizando con más temas interés común.
 
 Implementaciones que se han hecho
@@ -10,6 +10,7 @@ Implementaciones que se han hecho
 * Auditoría de tablas
 * Distribución del proyecto
 * Autenticación personalizada usando nuestra clase SessionHelper
+* Dependency injection con LightInject
 
 Datos de accesso
 ----------------
