@@ -1,15 +1,26 @@
-﻿using Common;
+﻿using BusinessLogic;
+using Common;
+using Demo_Arquitectura.App_Start;
 using Demo_Arquitectura.Filters;
 using Demo_Arquitectura.ViewsModel;
-using Model.BusinessLogic;
-using System;
 using System.Web.Mvc;
 
 namespace Demo_Arquitectura.Controllers
 {
     public class AccountController : Controller
     {
-        private UsuarioLogic usuarioLogic = new UsuarioLogic();
+        private readonly IUsuarioLogic usuarioLogic;
+
+        //Esta forma no me funciona, debería ser la más optima
+        //public AccountController(IUsuarioLogic _usuarioLogic)
+        //{
+        //    usuarioLogic = _usuarioLogic;
+        //}
+
+        public AccountController()
+        {
+            usuarioLogic = IoC.container.GetInstance<IUsuarioLogic>();
+        }
 
         [EstaAutenticadoAttribute]
         public ActionResult Index()

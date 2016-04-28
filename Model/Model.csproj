@@ -30,14 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -51,31 +43,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BusinessLogic\UsuarioLogic.cs" />
-    <Compile Include="BusinessLogic\PaisLogic.cs" />
-    <Compile Include="BusinessLogic\AlumnoLogic.cs" />
-    <Compile Include="DemoContext.cs" />
-    <Compile Include="Entities\Adjunto.cs" />
-    <Compile Include="Entities\Alumno.cs" />
-    <Compile Include="Entities\AlumnoCurso.cs" />
-    <Compile Include="Entities\Curso.cs" />
-    <Compile Include="Entities\Interfaces\IAuditable.cs" />
-    <Compile Include="Entities\Pais.cs" />
-    <Compile Include="Entities\Usuario.cs" />
+    <Compile Include="Adjunto.cs" />
+    <Compile Include="Alumno.cs" />
+    <Compile Include="AlumnoCurso.cs" />
+    <Compile Include="Curso.cs" />
+    <Compile Include="Interfaces\IAuditable.cs" />
+    <Compile Include="Pais.cs" />
+    <Compile Include="Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
       <Project>{0a8c6154-dc0a-46eb-b45b-10beacc66bb6}</Project>
       <Name>Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Repository\Repository.csproj">
-      <Project>{3345bb71-fa4a-425d-9ce2-b08331057b5a}</Project>
-      <Name>Repository</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

@@ -7,232 +7,233 @@ using Repository.Interfaces;
 
 namespace Repository
 {
-    public class Repository<T> where T : class, new()
+    public class Repository<T> : IRepository<T> where T : class
     {
-        private DbContext DatabaseContext;
-        public DbSet<T> DbSet;
-
-        #region Basic CRUD Operations
-
-        /// <summary>
-        /// Obtiene una entidad de nuestra base datos.
-        /// </summary>
-        /// <param name="condition"></param>
-        /// <returns></returns>
-        public T Get(Expression<Func<T, bool>> condition = null)
+        private static IQueryable<T> PerformInclusions(IEnumerable<Expression<Func<T, object>>> includeProperties,
+                                                       IQueryable<T> query)
         {
-            var query = DatabaseContext.Set<T>().AsQueryable();
-
-            if (condition != null)
-            {
-                query = query.Where(condition);
-            }
-
-            return query.FirstOrDefault();
+            return includeProperties.Aggregate(query, (current, includeProperty) => current.Include(includeProperty));
+        }
+        #region IRepository<T> Members
+        public IQueryable<T> AsQueryable()
+        {
+            return DbContextScope.DbContext.Set<T>().AsQueryable();
         }
 
-        /// <summary>
-        /// Obtiene una entidad de nuestra base datos incluyendo sus asociaciones.
-        /// </summary>
-        /// <param name="condition"></param>
-        /// <param name="includes"></param>
-        /// <returns></returns>
-        public T Get(Expression<Func<T, bool>> condition = null, params Expression<Func<T, dynamic>>[] includes)
+        public IEnumerable<T> GetAll(params Expression<Func<T, object>>[] includeProperties)
         {
-            var query = DatabaseContext.Set<T>().AsQueryable();
-
-            foreach (var include in includes)
-            {
-                query = query.Include(include);
-            }
-
-            if (condition != null)
-            {
-                query = query.Where(condition);
-            }
-
-            return query.FirstOrDefault();
+            IQueryable<T> query = AsQueryable();
+            return PerformInclusions(includeProperties, query);
         }
 
-        /// <summary>
-        /// Retorna un objeto Queryable, si queremos que traiga información de la base de datos podemos usar un GetAll().ToList()
-        /// </summary>
-        /// <returns></returns>
-        public IQueryable<T> GetAll()
+        public IEnumerable<T> GetAll()
         {
-            var query = DatabaseContext.Set<T>().AsQueryable();
-
-            return query;
-        }
-        
-        /// <summary>
-        /// Retorna un objeto Queryable, si queremos que traiga información de la base de datos podemos usar un GetAll().ToList().
-        /// Adicionalmente, podemos especificar que asocaciones queremos que incluya.
-        /// </summary>
-        /// <param name="condition"></param>
-        /// <param name="includes"></param>
-        /// <returns></returns>
-        public IQueryable<T> GetAll(params Expression<Func<T, dynamic>>[] includes)
-        {
-            var query = DatabaseContext.Set<T>().AsQueryable();
-
-            foreach (var include in includes)
-            {
-                query = query.Include(include);
-            }
-
+            IQueryable<T> query = AsQueryable();
             return query;
         }
 
-        /// <summary>
-        /// Retorna un objeto Queryable especificado por una condición
-        /// </summary>
-        /// <param name="condition"></param>
-        /// <param name="includes"></param>
-        /// <returns></returns>
-        public IQueryable<T> FindBy(Expression<Func<T, bool>> condition)
+        public IEnumerable<T> Find(Expression<Func<T, bool>> where, params Expression<Func<T, object>>[] includeProperties)
         {
-            var query = DatabaseContext.Set<T>().AsQueryable();
-
-            query = query.Where(condition);
-
-            return query;
+            IQueryable<T> query = AsQueryable();
+            query = PerformInclusions(includeProperties, query);
+            return query.Where(where);
         }
 
-        /// <summary>
-        /// Retorna un objeto Queryable especificado por una condición y podemos especificar que asociaciones podemos incluir.
-        /// </summary>
-        /// <param name="condition"></param>
-        /// <param name="includes"></param>
-        /// <returns></returns>
-        public IQueryable<T> FindBy(Expression<Func<T, bool>> condition, params Expression<Func<T, dynamic>>[] includes)
+        public T Get(Expression<Func<T, bool>> where, params Expression<Func<T, object>>[] includeProperties)
         {
-            var query = DatabaseContext.Set<T>().AsQueryable();
-
-            foreach (var include in includes)
-            {
-                query = query.Include(include);
-            }
-
-            query = query.Where(condition);
-
-            return query;
+            IQueryable<T> query = AsQueryable();
+            query = PerformInclusions(includeProperties, query);
+            return query.FirstOrDefault(where);
         }
 
-        /// <summary>
-        /// Inserta un registro en nuestra tabla
-        /// </summary>
-        /// <param name="t"></param>
-        public void Insert(T t)
+        public void Delete(T entity)
         {
-            DatabaseContext.Entry(t).State = EntityState.Added;
+            DbContextScope.DbContext.Set<T>().Remove(entity);
         }
 
-        /// <summary>
-        /// Inserta varios registros en nuestra tabla
-        /// </summary>
-        /// <param name="t"></param>
+        public void Insert(T entity)
+        {
+            DbContextScope.DbContext.Set<T>().Add(entity);
+        }
+
+        public void Update(T entity)
+        {
+            DbContextScope.DbContext.Set<T>().Attach(entity);
+            DbContextScope.DbContext.Entry(entity).State = EntityState.Modified;
+        }
+
         public void Insert(IEnumerable<T> entities)
         {
             foreach (var e in entities)
             {
-                DatabaseContext.Entry(e).State = EntityState.Added;
+                DbContextScope.DbContext.Entry(e).State = EntityState.Added;
             }
         }
 
-        /// <summary>
-        /// Actualiza un registro de nuestra tabla
-        /// </summary>
-        /// <param name="t"></param>
-        public void Update(T t)
-        {
-            DatabaseContext.Entry(t).State = EntityState.Modified;
-        }
-
-        /// <summary>
-        /// Actualiza varios registros de nuestra tabla
-        /// </summary>
-        /// <param name="t"></param>
         public void Update(IEnumerable<T> entities)
         {
             foreach (var e in entities)
             {
-                DatabaseContext.Entry(e).State = EntityState.Modified;
+                DbContextScope.DbContext.Entry(e).State = EntityState.Modified;
             }
         }
 
-        /// <summary>
-        /// Actualiza unicamente las columnas/propiedades que le indiquemos en el segundo parámetro Ejm: x => x.Nombre, x => x.Apellido
-        /// </summary>
-        /// <param name="t"></param>
-        /// <param name="fields"></param>
-        public void PartialUpdate<TProperty>(T t, params Expression<Func<T, TProperty>>[] properties)
+        public void PartialUpdate(T t, params Expression<Func<T, object>>[] properties)
         {
-            DatabaseContext.Configuration.AutoDetectChangesEnabled = false;
-            DatabaseContext.Configuration.ValidateOnSaveEnabled = false;
-
-            DbSet.Attach(t);
-            var entry = DatabaseContext.Entry(t);
-
+            var entry = DbContextScope.DbContext.Entry(t);
             foreach (var p in properties) entry.Property(p).IsModified = true;
         }
-
-        /// <summary>
-        /// Elimina un registro de nuestra tabla
-        /// </summary>
-        /// <param name="t"></param>
-        /// <param name="fields"></param>
-        public void Delete(T t)
-        {
-            DatabaseContext.Entry(t).State = EntityState.Deleted;
-        }
-
-        public void Save()
-        {
-            DatabaseContext.SaveChanges();
-        }
         #endregion
 
-        #region Sql Query
-        /// <summary>
-        /// Ejecuta un query personalizado de SQL, la segunda opción son los parámetros a limitar
-        /// </summary>
-        /// <param name="query"></param>
-        /// <param name="parameters"></param>
-        /// <returns></returns>
         public IEnumerable<T> SqlQuery(string query, params dynamic[] parameters)
         {
-            return DatabaseContext.Database.SqlQuery<T>(query, parameters);
+            return DbContextScope.DbContext.Database.SqlQuery<T>(query, parameters);
         }
 
-        /// <summary>
-        /// Ejecuta un query personalizado de SQL, la segunda opción son los parámetros a limitar. Este método es solo de entrada, no se espera un retorno.
-        /// </summary>
-        /// <param name="query"></param>
-        /// <param name="parameters"></param>
-        /// <returns></returns>
-        public void ExecuteSqlCommand(string query, params dynamic[] parameters)
+        public int ExecuteSqlCommand(string query, params dynamic[] parameters)
         {
-            DatabaseContext.Database.ExecuteSqlCommand(query, parameters);
+            return DbContextScope.DbContext.Database.ExecuteSqlCommand(query, parameters);
         }
-        #endregion
 
-        #region Transaction
-        public DbContextTransaction BeginsTransaction()
-        {
-            return DatabaseContext.Database.BeginTransaction();
-        }
-        #endregion
+        //private DbContext DatabaseContext;
+        //public DbSet<T> DbSet;
 
-        public DbContext ContextScope(DbContext context, bool LazyLoadingEnabled = false, bool ProxyCreationEnabled = false)
-        {
-            DatabaseContext = context;
-            DbSet = DatabaseContext.Set<T>();
+        //public T Get(Expression<Func<T, bool>> condition = null)
+        //{
+        //    var query = DatabaseContext.Set<T>().AsQueryable();
 
-            DatabaseContext.Configuration.LazyLoadingEnabled = LazyLoadingEnabled;
-            DatabaseContext.Configuration.ProxyCreationEnabled = ProxyCreationEnabled;
+        //    if (condition != null)
+        //    {
+        //        query = query.Where(condition);
+        //    }
 
-            return DatabaseContext;
-        }
+        //    return query.FirstOrDefault();
+        //}
+        //public T Get(Expression<Func<T, bool>> condition = null, params Expression<Func<T, dynamic>>[] includes)
+        //{
+        //    var query = DatabaseContext.Set<T>().AsQueryable();
+
+        //    foreach (var include in includes)
+        //    {
+        //        query = query.Include(include);
+        //    }
+
+        //    if (condition != null)
+        //    {
+        //        query = query.Where(condition);
+        //    }
+
+        //    return query.FirstOrDefault();
+        //}
+        //public IQueryable<T> GetAll()
+        //{
+        //    var query = DatabaseContext.Set<T>().AsQueryable();
+
+        //    return query;
+        //}
+        //public IQueryable<T> GetAll(params Expression<Func<T, dynamic>>[] includes)
+        //{
+        //    var query = DatabaseContext.Set<T>().AsQueryable();
+
+        //    foreach (var include in includes)
+        //    {
+        //        query = query.Include(include);
+        //    }
+
+        //    return query;
+        //}
+        //public IQueryable<T> FindBy(Expression<Func<T, bool>> condition)
+        //{
+        //    var query = DatabaseContext.Set<T>().AsQueryable();
+
+        //    query = query.Where(condition);
+
+        //    return query;
+        //}
+        //public IQueryable<T> FindBy(Expression<Func<T, bool>> condition, params Expression<Func<T, dynamic>>[] includes)
+        //{
+        //    var query = DatabaseContext.Set<T>().AsQueryable();
+
+        //    foreach (var include in includes)
+        //    {
+        //        query = query.Include(include);
+        //    }
+
+        //    query = query.Where(condition);
+
+        //    return query;
+        //}
+        //public void Insert(T t)
+        //{
+        //    DatabaseContext.Entry(t).State = EntityState.Added;
+        //}
+        //public void Insert(IEnumerable<T> entities)
+        //{
+        //    foreach (var e in entities)
+        //    {
+        //        DatabaseContext.Entry(e).State = EntityState.Added;
+        //    }
+        //}
+        //public void Update(T t)
+        //{
+        //    DatabaseContext.Entry(t).State = EntityState.Modified;
+        //}
+        //public void Update(IEnumerable<T> entities)
+        //{
+        //    foreach (var e in entities)
+        //    {
+        //        DatabaseContext.Entry(e).State = EntityState.Modified;
+        //    }
+        //}
+        //public void PartialUpdate(T t, params Expression<Func<T, object>>[] properties)
+        //{
+        //    DatabaseContext.Configuration.AutoDetectChangesEnabled = false;
+        //    DatabaseContext.Configuration.ValidateOnSaveEnabled = false;
+
+        //    DbSet.Attach(t);
+        //    var entry = DatabaseContext.Entry(t);
+
+        //    foreach (var p in properties) entry.Property(p).IsModified = true;
+        //}
+        //public void Delete(T t)
+        //{
+        //    DatabaseContext.Entry(t).State = EntityState.Deleted;
+        //}
+
+        //public void Save()
+        //{
+        //    DatabaseContext.SaveChanges();
+        //}
+
+        //public IEnumerable<T> SqlQuery(string query, params dynamic[] parameters)
+        //{
+        //    return DatabaseContext.Database.SqlQuery<T>(query, parameters);
+        //}
+
+        //public void ExecuteSqlCommand(string query, params dynamic[] parameters)
+        //{
+        //    DatabaseContext.Database.ExecuteSqlCommand(query, parameters);
+        //}
+
+        //public DbContextTransaction BeginsTransaction()
+        //{
+        //    return DatabaseContext.Database.BeginTransaction();
+        //}
+
+        //public DbContext ContextScope(DbContext context, bool LazyLoadingEnabled = false, bool ProxyCreationEnabled = false)
+        //{
+        //    DatabaseContext = context;
+        //    DbSet = DatabaseContext.Set<T>();
+
+        //    DatabaseContext.Configuration.LazyLoadingEnabled = LazyLoadingEnabled;
+        //    DatabaseContext.Configuration.ProxyCreationEnabled = ProxyCreationEnabled;
+
+        //    return DatabaseContext;
+        //}
+
+        //public DbContext ContextScope(DbContext context, bool LazyLoadingEnabled = false, bool ProxyCreationEnabled = false)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

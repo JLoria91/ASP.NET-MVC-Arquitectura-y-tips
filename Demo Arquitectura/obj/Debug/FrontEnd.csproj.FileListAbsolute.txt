@@ -41,3 +41,53 @@ D:\Mi Trabajo\Tutoriales\asp.net-mvc\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquit
 D:\Mi Trabajo\Tutoriales\asp.net-mvc\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\obj\Debug\Demo Arquitectura.pdb
 D:\Mi Trabajo\Tutoriales\asp.net-mvc\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\Common.dll
 D:\Mi Trabajo\Tutoriales\asp.net-mvc\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\Common.pdb
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\roslyn\csc.exe
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\roslyn\System.Collections.Immutable.dll
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\roslyn\System.Reflection.Metadata.dll
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\roslyn\vbc.exe
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\roslyn\VBCSCompiler.exe
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\roslyn\VBCSCompiler.exe.config
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\Demo Arquitectura.dll.config
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\Demo Arquitectura.dll
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\Demo Arquitectura.pdb
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\BusinessLogic.dll
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\Common.dll
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\EntityFramework.dll
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\EntityFramework.SqlServer.dll
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\LightInject.dll
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\Microsoft.Web.Infrastructure.dll
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\Model.dll
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\System.Web.Helpers.dll
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\System.Web.Mvc.dll
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\System.Web.Razor.dll
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\System.Web.Webpages.Deployment.dll
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\System.Web.Webpages.dll
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\System.Web.Webpages.Razor.dll
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\Repository.dll
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\DataBaseContext.dll
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\BusinessLogic.pdb
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\Common.pdb
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\Model.pdb
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\EntityFramework.xml
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\EntityFramework.SqlServer.xml
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\LightInject.pdb
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\LightInject.xml
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\System.Web.Razor.xml
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\System.Web.Webpages.xml
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\System.Web.Webpages.Deployment.xml
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\System.Web.Webpages.Razor.xml
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\System.Web.Helpers.xml
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\System.Web.Mvc.xml
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\Repository.pdb
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\bin\DataBaseContext.pdb
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\obj\Debug\FrontEnd.csprojResolveAssemblyReference.cache
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\obj\Debug\Demo Arquitectura.dll
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Demo Arquitectura\obj\Debug\Demo Arquitectura.pdb

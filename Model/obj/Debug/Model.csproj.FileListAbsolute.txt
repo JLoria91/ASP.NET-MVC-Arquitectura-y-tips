@@ -21,3 +21,11 @@ D:\Mi Trabajo\Tutoriales\asp.net-mvc\ASP.NET-MVC-Arquitectura-y-tips\Model\bin\D
 D:\Mi Trabajo\Tutoriales\asp.net-mvc\ASP.NET-MVC-Arquitectura-y-tips\Model\bin\Debug\Model.dll.config
 D:\Mi Trabajo\Tutoriales\asp.net-mvc\ASP.NET-MVC-Arquitectura-y-tips\Model\bin\Debug\Common.dll
 D:\Mi Trabajo\Tutoriales\asp.net-mvc\ASP.NET-MVC-Arquitectura-y-tips\Model\bin\Debug\Common.pdb
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Model\bin\Debug\Model.dll.config
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Model\bin\Debug\Model.dll
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Model\bin\Debug\Model.pdb
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Model\bin\Debug\Common.dll
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Model\bin\Debug\Common.pdb
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Model\obj\Debug\Model.dll
+D:\eduardo\repositorio\ASP.NET-MVC-Arquitectura-y-tips\Model\obj\Debug\Model.pdb

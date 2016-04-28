@@ -1,16 +1,19 @@
-﻿using System;
+﻿using Demo_Arquitectura.App_Start;
+using System;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace Demo_Arquitectura
 {
-    public class MvcApplication : System.Web.HttpApplication
+    public class MvcApplication : HttpApplication
     {
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            IoC.Initialize();
         }
 
         protected void Application_Error(object sender, EventArgs e)

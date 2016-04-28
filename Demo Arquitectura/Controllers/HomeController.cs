@@ -1,16 +1,23 @@
-﻿using Common;
+﻿using BusinessLogic;
+using Common;
 using Demo_Arquitectura.Filters;
-using Model.BusinessLogic;
-using Model.Entities;
 using System.Web.Mvc;
+using Model;
+using Demo_Arquitectura.App_Start;
 
 namespace Demo_Arquitectura.Controllers
 {
     [AutenticadoAttribute]
     public class HomeController : Controller
     {
-        private AlumnoLogic alumnoLogic = new AlumnoLogic();
-        private PaisLogic paisLogic = new PaisLogic();
+        private readonly IAlumnoLogic alumnoLogic;
+        private readonly IPaisLogic paisLogic;
+
+        public HomeController()
+        {
+            alumnoLogic = IoC.container.GetInstance<IAlumnoLogic>();
+            paisLogic = IoC.container.GetInstance<IPaisLogic>();
+        }
 
         public ActionResult Index()
         {
